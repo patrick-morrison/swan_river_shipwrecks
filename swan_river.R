@@ -14,7 +14,7 @@ popup = glue('<b>{shipwrecks$Name}</b></br>
 
 map <- leaflet(shipwrecks, options = leafletOptions(preferCanvas = TRUE)) %>% 
   addProviderTiles(providers$CartoDB.Voyager,
-                   options = providerTileOptions(minZoom = 8, maxZoom = 16),
+                   options = providerTileOptions(minZoom = 8, maxZoom = 17),
                    group="basemap") %>% 
   groupOptions("basemap", zoomLevels = 0:18) %>% 
   addCircleMarkers(popup = popup,
