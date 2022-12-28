@@ -9,7 +9,7 @@ shipwrecks <- read_csv("Swan Shipwrecks.csv") %>% st_as_sf(coords = c("Lon", "La
 popup = glue('<b>{shipwrecks$Name}</b></br>
              Sunk: {shipwrecks$Sunk}</br>
              {shipwrecks$Description}</br>
-             <a href="{shipwrecks$Link}" target="_blank" rel="noopener noreferrer">More info 🔗</a>')
+             <a href="{shipwrecks$Link}" target="_blank">More info 🔗</a>')
 
 
 map <- leaflet(shipwrecks, options = leafletOptions(preferCanvas = TRUE)) %>% 
