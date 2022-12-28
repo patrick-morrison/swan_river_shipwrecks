@@ -9,7 +9,7 @@ shipwrecks <- read_csv("Swan Shipwrecks.csv") %>% st_as_sf(coords = c("Lon", "La
 popup = glue('<b>{shipwrecks$Name}</b></br>
              Sunk: {shipwrecks$Sunk}</br>
              {shipwrecks$Description}</br>
-             <a href="{shipwrecks$Link}">More info 🔗</a>')
+             <a href="{shipwrecks$Link}" target="_blank" rel="noopener noreferrer">More info 🔗</a>')
 
 
 map <- leaflet(shipwrecks, options = leafletOptions(preferCanvas = TRUE)) %>% 
@@ -18,7 +18,7 @@ map <- leaflet(shipwrecks, options = leafletOptions(preferCanvas = TRUE)) %>%
                    group="basemap") %>% 
   groupOptions("basemap", zoomLevels = 0:18) %>% 
   addCircleMarkers(popup = popup,
-             color = "blue", radius=5,
+             color = "#1B54A8", radius=5, opacity=0.7, weight = 6,
              popupOptions = popupOptions(maxHeight = 320)) %>% 
   addScaleBar(position = 'bottomleft') %>% 
   htmlwidgets::onRender(paste0("
@@ -26,4 +26,4 @@ map <- leaflet(shipwrecks, options = leafletOptions(preferCanvas = TRUE)) %>%
       $('head').append('<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\" />');
     }"))
 map
-saveWidget(map, file="beacon.html", title="Beacon Island Map")
+saveWidget(map, file="index.html", title="Shipwrecks of the Swan River")
